@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="BusScheduler">
+  <ClassDiagramComponents>
+    <Class name="Bus" package="busscheduler" visibility="public" xPosition="985.0" yPosition="447.0">
+      <Fields>
+        <Field name="busId" type="String" visibility="private" isFinal="true"/>
+        <Field name="timeSchedule" type="Schedule" visibility="private"/>
+        <Field name="line" type="BusLine" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="busId"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setSchedule" returnType="void" visibility="public">
+          <Argument type="int" name="hour"/>
+          <Argument type="int" name="minute"/>
+        </Method>
+        <Method name="setBusLine" returnType="void" visibility="public">
+          <Argument type="BusLine" name="l"/>
+        </Method>
+        <Method name="getId" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BusLine" package="busscheduler" visibility="public" xPosition="675.0" yPosition="447.0">
+      <Fields>
+        <Field name="lineNumber" type="String" visibility="private"/>
+        <Field name="routes" type="List&lt;Route&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="lineNumber"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="addRoute" returnType="void" visibility="public">
+          <Argument type="Route" name="r"/>
+        </Method>
+        <Method name="addRoute" returnType="void" visibility="public">
+          <Argument type="int" name="position"/>
+          <Argument type="Route" name="r"/>
+        </Method>
+        <Method name="deleteRoute" returnType="void" visibility="public">
+          <Argument type="Route" name="r"/>
+        </Method>
+        <Method name="getId" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BusScheduler" package="busscheduler" visibility="public" xPosition="19.0" yPosition="116.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Route" package="busscheduler" visibility="public" xPosition="321.0" yPosition="428.0">
+      <Fields>
+        <Field name="routeName" type="String" visibility="private" isFinal="true"/>
+        <Field name="stops" type="List&lt;Stop&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="routeName"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="addStop" returnType="void" visibility="public">
+          <Argument type="int" name="position"/>
+          <Argument type="Stop" name="stop"/>
+        </Method>
+        <Method name="addStop" returnType="void" visibility="public">
+          <Argument type="Stop" name="stop"/>
+        </Method>
+        <Method name="removeStop" returnType="void" visibility="public">
+          <Argument type="Stop" name="stop"/>
+        </Method>
+        <Method name="getAllStops" returnType="List&lt;Stop&gt;" visibility="public"/>
+        <Method name="getId" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Schedule" package="busscheduler" visibility="public" xPosition="1027.0" yPosition="768.0">
+      <Fields>
+        <Field name="hour" type="int" visibility="private"/>
+        <Field name="minute" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="hour"/>
+          <Argument type="int" name="minute"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getHour" returnType="int" visibility="public"/>
+        <Method name="setHour" returnType="void" visibility="public">
+          <Argument type="int" name="hour"/>
+        </Method>
+        <Method name="getMinute" returnType="int" visibility="public"/>
+        <Method name="setMinute" returnType="void" visibility="public">
+          <Argument type="int" name="minute"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Stop" package="busscheduler" visibility="public" xPosition="19.0" yPosition="523.0">
+      <Fields>
+        <Field name="stopCode" type="String" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="stopCode"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GenericDaoImpl" package="dataaccess" visibility="public" xPosition="902.0" yPosition="-8.0">
+      <Fields>
+        <Field name="database" type="HashMap&lt;PK, T&gt;" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="create" returnType="T" visibility="public">
+          <Argument type="T" name="newItem"/>
+        </Method>
+        <Method name="findById" returnType="T" visibility="public">
+          <Argument type="PK" name="id"/>
+        </Method>
+        <Method name="findAll" returnType="Collection&lt;T&gt;" visibility="public"/>
+        <Method name="update" returnType="T" visibility="public">
+          <Argument type="T" name="updatedItem"/>
+        </Method>
+        <Method name="delete" returnType="T" visibility="public">
+          <Argument type="PK" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="GenericDao" package="dataaccess" visibility="public" xPosition="441.0" yPosition="84.0">
+      <Methods>
+        <Method name="create" returnType="T" visibility="public">
+          <Argument type="T" name="newItem"/>
+        </Method>
+        <Method name="findById" returnType="T" visibility="public">
+          <Argument type="PK" name="id"/>
+        </Method>
+        <Method name="findAll" returnType="Collection&lt;T&gt;" visibility="public"/>
+        <Method name="update" returnType="T" visibility="public">
+          <Argument type="T" name="updatedItem"/>
+        </Method>
+        <Method name="delete" returnType="T" visibility="public">
+          <Argument type="PK" name="primaryKey"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="Identifiable" package="dataaccess" visibility="public" xPosition="564.0" yPosition="840.0">
+      <Methods>
+        <Method name="getId" returnType="PK" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="uses" source="dataaccess.GenericDao" target="busscheduler.BusLine" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <HasRelation name="stops" source="busscheduler.Route" target="busscheduler.Stop" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Stop&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="busscheduler.Bus" target="dataaccess.Identifiable"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="dataaccess.GenericDaoImpl" target="dataaccess.GenericDao"/>
+    <UseRelation name="uses" source="dataaccess.GenericDao" target="busscheduler.Bus" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <UseRelation name="uses" source="dataaccess.GenericDao" target="busscheduler.Stop" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <HasRelation name="routes" source="busscheduler.BusLine" target="busscheduler.Route" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Route&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="busscheduler.Stop" target="dataaccess.Identifiable"/>
+    <UseRelation name="uses" source="busscheduler.BusScheduler" target="dataaccess.GenericDao" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="busscheduler.BusLine" target="dataaccess.Identifiable"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="busscheduler.Route" target="dataaccess.Identifiable"/>
+    <HasRelation name="line" source="busscheduler.Bus" target="busscheduler.BusLine" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="timeSchedule" source="busscheduler.Bus" target="busscheduler.Schedule" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="uses" source="dataaccess.GenericDao" target="busscheduler.Route" sourceCardinality="1..1" targetCardinality="1..*"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
